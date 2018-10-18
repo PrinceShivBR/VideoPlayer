@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">taskproject</string>
+    <string name="web_client_id">Include your web client id here</string>
+    <string name="log_error_occurred">"Error occurred: "</string>
+</resources>

@@ -1,0 +1,35 @@
+package task.taskproject.ui.playvideo;
+
+import java.util.List;
+
+import task.taskproject.models.VideoModel;
+import task.taskproject.ui.playvideo.interfaces.IPlayVideoContract;
+import task.taskproject.ui.playvideo.interfaces.IPlayVideoInteractor;
+
+/**
+ * Created by shivappa.battur on 10/10/2018
+ */
+public class PlayVideoPresenterImpl implements IPlayVideoContract.IPlayVideoPresenter, IPlayVideoInteractor.OnVideoFetchCallback {
+    private IPlayVideoContract.IPlayVideoView mView_;
+    private IPlayVideoInteractor interactor;
+
+    PlayVideoPresenterImpl(IPlayVideoContract.IPlayVideoView view) {
+        this.mView_ = view;
+        interactor = new PlayVideoInteractorImpl(this);
+    }
+
+    @Override
+    public void fetchVideoList(int videoId) {
+        interactor.fetchVideoList(videoId);
+    }
+
+    @Override
+    public void onVideoFetchSuccess(List<VideoModel> videoList) {
+        mView_.showVideoList(videoList);
+    }
+
+    @Override
+    public void onFetchFailure(String errorMessage) {
+        mView_.showError(errorMessage);
+    }
+}
