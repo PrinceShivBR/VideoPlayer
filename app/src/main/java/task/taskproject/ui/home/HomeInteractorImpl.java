@@ -62,7 +62,7 @@ public class HomeInteractorImpl implements IHomeInteractor {
     }
 
     private boolean insertVideoDataIntoDb(List<VideoModel> videoModelList) {
-        return DBHelper.getInstance(mContext_).insertVideoListData(videoModelList);
+        return DBHelper.getInstance(TaskApplication.getAppContext()).insertVideoListData(videoModelList);
     }
 
     interface IFetchApi {
